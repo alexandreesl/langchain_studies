@@ -4,21 +4,16 @@ A Python project for studying and experimenting with [LangChain](https://python.
 
 ## Setup
 
-This project uses [Poetry](https://python-poetry.org/) for dependency management.
+This project uses [uv](https://github.com/astral-sh/uv) for dependency management.
 
-1. **Install Poetry** (if not already installed):
+1. **Install `uv`** (if not already installed):
    ```bash
-   curl -sSL https://install.python-poetry.org | python3 -
+   curl -LsSf https://astral.sh/uv/install.sh | sh
    ```
 
-2. **Create and activate the virtual environment, then install dependencies**:
+2. **Install dependencies for this project**:
    ```bash
-   poetry install
-   ```
-
-3. **Activate the shell** (optional):
-   ```bash
-   poetry shell
+   uv sync
    ```
 
 ## Installed packages
@@ -34,10 +29,10 @@ This project uses [Poetry](https://python-poetry.org/) for dependency management
 Run scripts from the project root:
 
 ```bash
-poetry run python -m langchain_studies.your_script
+uv run python -m langchain_studies.your_script
 ```
 
-Or after `poetry shell`:
+Or run directly inside the project’s environment:
 
 ```bash
 python -m langchain_studies.your_script
