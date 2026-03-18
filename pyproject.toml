@@ -1,0 +1,18 @@
+[project]
+name = "langchainstudies"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "langchain>=1.2.12",
+    "langchain-community>=0.4.1",
+    "langchain-core>=1.2.20",
+    "langchain-openai>=1.1.11",
+    "langchain-postgres>=0.0.17",
+    "langchain-text-splitters>=1.1.1",
+    "pydantic>=2.12.5",
+    "pydantic-core>=2.41.5",
+    "pytest>=9.0.2",
+    "ruff>=0.15.6",
+]
