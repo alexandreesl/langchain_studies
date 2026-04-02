@@ -32,3 +32,30 @@ print(result.keys())
 print(result['story'])
 print('========================')
 print(result['analysis'])
+print('========================')
+
+from operator import itemgetter
+# Alternative approach using dictionary construction
+manual_chain = (
+    RunnablePassthrough() |  # Pass through input
+    {
+        "story": story_chain,  # Add story result
+        "topic": itemgetter("topic")  # Preserve original topic
+    } |
+    RunnablePassthrough().assign(  # Add analysis based on story
+        analysis=analysis_chain
+    )
+)
+result = manual_chain.invoke({"topic": "a rainy day"})
+print(result.keys())  # Output: dict_keys(['story', 'topic', 'analysis'])
+print('============================================')
+
+# Simplified dictionary construction
+simple_dict_chain_corrected = story_chain | {
+    "story": RunnablePassthrough(),  # Pass the story output as 'story'
+    "analysis": analysis_chain
+}
+# analysis_chain will receive {'story': 'the actual story content'} as expected.
+result_corrected = simple_dict_chain_corrected.invoke({"topic": "a rainy day"})
+print(result_corrected.keys())
+
